@@ -27,6 +27,9 @@ IDE
 
 It was developed on Eclipse Neon.
 
+---------------------------------
+Github
 
+https://github.com/imesper/CNNHandGesture.git
 
 
