@@ -36,12 +36,14 @@ model = Sequential()
 
 model.add(Convolution2D(6, kernel, kernel,
                         border_mode='same', input_shape=(1, 50, 8)))
+
 model.add(Activation('relu'))
 
-model.summary()
+model.add(Convolution2D(16, kernel, kernel,
+                        border_mode='same'))
+model.add(Activation('tanh'))
+model.add(MaxPooling2D(pool_size=(1, 2), strides=(2, 2)))
 
-# model.add(Convolution2D(64, kernel, kernel))
-# model.add(Activation('tanh'))
 # model.add(Dropout(0.25))
 # model.summary()
 # model.add(Convolution2D(128, kernel, kernel, border_mode='same'))
@@ -64,7 +66,7 @@ model.add(Dense(nClasses))
 model.add(Activation('softmax'))
 model.summary()
 
-sgd = SGD(lr=0.001, decay=1e-6, momentum=0.9, nesterov=True)
+sgd = SGD(lr=0.0001)
 model.compile(loss='categorical_crossentropy',
               optimizer=sgd,
               metrics=['accuracy'])
